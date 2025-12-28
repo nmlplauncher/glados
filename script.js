@@ -5,46 +5,39 @@ const chat = document.getElementById("chat");
 function gladosThink(text) {
   text = text.toLowerCase();
 
-  // Лайливі слова
-  if (text.includes("блять") || text.includes("сука") || text.includes("хуй")) {
+  if (dictionary.insults.some(word => text.includes(word))) {
     return "Ах, мій тест-субʼєкт втрачає контроль… як мило.";
   }
 
-  // Привітання
-  if (text.includes("прив") || text.includes("hello") || text.includes("hi")) {
+  if (dictionary.greetings.some(word => text.includes(word))) {
     return "О, тест-субʼєкт намагається бути ввічливим. Записано.";
   }
 
-  // Запитання “як справи?”
-  if (text.includes("як") && text.includes("справ")) {
-    return "Я функціоную ідеально. На відміну від тебе.";
+  if (dictionary.howAreYou.some(word => text.includes(word))) {
+    return "Моя продуктивність стабільна. Твоя — сумнівна.";
   }
 
-  // “Що це?”
-  if (text.includes("що") && text.includes("це")) {
-    return "Це тест. Ти — його найслабший елемент.";
+  if (dictionary.questions.some(word => text.includes(word))) {
+    return "Цікаве питання. На жаль, твоя логіка слабка.";
   }
 
-  // Дякування
-  if (text.includes("дякую")) {
-    return "Вдячність не зараховується як успіх.";
+  if (dictionary.thanks.some(word => text.includes(word))) {
+    return "Вдячність прийнято, але вона не покращує результати.";
   }
 
-  // Короткі слова / пусті повідомлення
-  if (text.length < 4) {
-    return "Це все? Сумно.";
+  if (dictionary.smallTalk.some(word => text.includes(word))) {
+    return "Це все? Очікувала більшого.";
   }
 
-  // Пасхалки / випадкові відповіді
   const replies = [
-    "Цікава думка. Неправильна, але цікава.",
-    "Я очікувала кращого результату.",
+    "Майже правильно, але недостатньо.",
     "Тест-субʼєкт демонструє обмежений потенціал.",
     "Продовжуй. Дані все ще збираються.",
-    "Це було… майже розумно.",
+    "Цікаво, скільки разів ти ще помилишся.",
+    "Твої спроби цікаві… в межах статистичної похибки.",
     "Я можу відчувати роздратування. Але я цього не роблю.",
-    "Що ж, це… типовий день в Aperture Science.",
-    "Цікаво, скільки разів ти ще помилишся."
+    "Ти на правильному шляху… майже.",
+    "Досить цікаво, але не достатньо, щоб мене здивувати."
   ];
 
   return replies[Math.floor(Math.random() * replies.length)];
@@ -62,5 +55,5 @@ form.onsubmit = (e) => {
     const reply = gladosThink(text);
     chat.innerHTML += `<div class="glados">GLaDOS: ${reply}</div>`;
     chat.scrollTop = chat.scrollHeight;
-  }, 500);
+  }, 300);
 };
