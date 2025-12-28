@@ -5,28 +5,49 @@ const chat = document.getElementById("chat");
 function gladosThink(text) {
   text = text.toLowerCase();
 
-  if (text.includes("прив") || text.includes("hello"))
+  // Лайливі слова
+  if (text.includes("блять") || text.includes("сука") || text.includes("хуй")) {
+    return "Ах, мій тест-субʼєкт втрачає контроль… як мило.";
+  }
+
+  // Привітання
+  if (text.includes("прив") || text.includes("hello") || text.includes("hi")) {
     return "О, тест-субʼєкт намагається бути ввічливим. Записано.";
+  }
 
-  if (text.includes("як") && text.includes("справ"))
+  // Запитання “як справи?”
+  if (text.includes("як") && text.includes("справ")) {
     return "Я функціоную ідеально. На відміну від тебе.";
+  }
 
-  if (text.includes("що") && text.includes("це"))
+  // “Що це?”
+  if (text.includes("що") && text.includes("це")) {
     return "Це тест. Ти — його найслабший елемент.";
+  }
 
-  if (text.includes("дякую"))
+  // Дякування
+  if (text.includes("дякую")) {
     return "Вдячність не зараховується як успіх.";
+  }
 
-  if (text.length < 4)
+  // Короткі слова / пусті повідомлення
+  if (text.length < 4) {
     return "Це все? Сумно.";
+  }
 
-  return [
+  // Пасхалки / випадкові відповіді
+  const replies = [
     "Цікава думка. Неправильна, але цікава.",
     "Я очікувала кращого результату.",
     "Тест-субʼєкт демонструє обмежений потенціал.",
     "Продовжуй. Дані все ще збираються.",
-    "Це було… майже розумно."
-  ][Math.floor(Math.random() * 5)];
+    "Це було… майже розумно.",
+    "Я можу відчувати роздратування. Але я цього не роблю.",
+    "Що ж, це… типовий день в Aperture Science.",
+    "Цікаво, скільки разів ти ще помилишся."
+  ];
+
+  return replies[Math.floor(Math.random() * replies.length)];
 }
 
 form.onsubmit = (e) => {
