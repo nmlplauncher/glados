@@ -1,0 +1,29 @@
+body {
+  background: #000;
+  color: #00ffff;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.terminal {
+  width: 500px;
+  border: 2px solid #00ffff;
+  padding: 15px;
+}
+
+#chat {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user {
+  color: #fff;
+}
+
+.glados {
+  color: #00ffff;
+}
